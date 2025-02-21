@@ -1,0 +1,81 @@
+% \section{System Overview}
+
+% Assume the role of an academic researcher in Computer Science. Your task is to contribute to a collaborative paper by writing a section focused on System Overview of . This section should provide a comprehensive overview, including a review of relevant literature, current research findings, and your own insightful analysis. Ensure your writing is clear, concise, and adheres to the academic standards of your field, including proper citation of sources using \citep{}. Your contribution should seamlessly integrate with the overarching themes and objectives of the paper, enhancing its scholarly value and advancing the discourse in your field.
+
+% we preprocessed the text and for feature extraction we used diffrent models such as LSTM, multilingual Language models and LLMs.we finetuned LLMs using LORA method.
+% after extracting the feature vector. we used both approaches using the embedding layer output and last hidden state of the model. we used the classifier to do the classification task such as Multi Layer Perceptron(MLP), XGBoost, Support Vector Machine(SVM) to solve multi label classification.
+
+
+
+
+% mostly we used different combination of these for diffrent languages.
+% - Key algorithms and modeling decisions/steps in detail.
+% - The resources beyond training data (e.g., lexicons, other data,...).
+
+% - The maths behind your model and its explanation in plain English.
+% \section{System Overview}
+
+% Our system for sentiment analysis across multiple languages is built on a series of carefully designed steps, combining preprocessing techniques, feature extraction models, and classification strategies. Below, we present the key components and decisions that shape our approach.
+
+% \subsection{Preprocessing and Feature Extraction}
+% The first step in our pipeline involves preprocessing the text data to ensure consistency and compatibility across multiple languages. This includes tasks such as tokenization, lowercasing, removing stopwords (if applicable), and handling special characters.
+
+% For feature extraction, we experimented with a variety of models, including Long Short-Term Memory networks (LSTMs), multilingual language models (e.g., mBERT, XLM-R), and large language models (LLMs) such as GPT-based architectures. These models were chosen for their ability to capture semantic meaning across different languages effectively.
+
+% After generating the feature representations, we explored two primary approaches:
+% \begin{itemize}
+%     \item Using the embedding layer output directly as feature vectors.
+%     \item Leveraging the last hidden state of the model to capture the contextualized representation of the input text.
+% \end{itemize}
+
+% \subsection{Classification Step}
+% Once the feature vectors were extracted, we focused on solving the multi-label classification problem. We investigated a range of classifiers to determine the most effective approach for this task. The models we used include:
+% \begin{itemize}
+%     \item \textbf{Multi-Layer Perceptron (MLP):} A neural network-based approach to model complex relationships between features and output labels.
+%     \item \textbf{XGBoost:} A gradient boosting framework that performs well on tabular data and can handle multi-label tasks efficiently.
+%     \item \textbf{Support Vector Machine (SVM):} A traditional machine learning classifier, which we adapted to handle multi-label outputs.
+% \end{itemize}
+
+% By combining these classifiers with the extracted features, we aimed to achieve high performance across different languages and sentiment labels.
+
+% \subsection{Fine-Tuning LLMs with LoRA}
+% To further enhance the performance of the large language models (LLMs), we applied the Low-Rank Adaptation (LoRA) fine-tuning method. LoRA allows for efficient fine-tuning by freezing the pre-trained model weights and introducing trainable low-rank matrices. This approach significantly reduces the computational cost of fine-tuning while maintaining strong performance. Using LoRA, we adapted the LLMs to our specific multi-label sentiment analysis task, ensuring that they could better handle the nuances of different languages and sentiment categories.
+
+% \subsection{Mathematical Foundation in Plain English}
+% At the core of our system lies the mathematical representation of text data. In simple terms:
+% \begin{itemize}
+%     \item The text is first converted into numerical representations (vectors) by the feature extraction models. These vectors capture the meaning and context of the words in the text.
+%     \item The classifiers then map these vectors to the output labels. For multi-label classification, this means predicting multiple sentiment categories (e.g., positive, negative, neutral) for a single input text. Each label is treated as a binary decision (present or absent), and the model optimizes for all labels simultaneously.
+% \end{itemize}
+
+% The fine-tuning process (e.g., LoRA) refines the weights of the models to align better with our specific dataset, ensuring accurate predictions across multiple languages.
+
+% \subsection{Model Variants and Experiments}
+% Throughout our experimentation, we tested several variants of the system:
+% \begin{itemize}
+%     \item \textbf{Feature extraction models:} Comparing LSTMs, multilingual models (like mBERT), and LLMs to determine their effectiveness in capturing cross-lingual sentiment.
+%     \item \textbf{Classification approaches:} Evaluating the performance of MLP, XGBoost, and SVM with different feature representations.
+%     \item \textbf{Fine-tuning strategies:} Exploring the impact of LoRA versus full fine-tuning on the LLMs.
+% \end{itemize}
+
+% By systematically evaluating these variants, we identified the optimal configuration for our multi-label, multi-language sentiment analysis task.
+% \section{Methodology}
+\section{System Overview}
+
+In this section, we present a comprehensive overview of our system for multi-label text classification, which integrates various deep learning architectures and machine learning classifiers. The system follows a pipeline that includes text preprocessing, feature extraction using neural network models, and classification through different machine learning algorithms.
+
+\subsection{Preprocessing}
+
+The preprocessing pipeline involves multiple steps to clean and standardize the text data. Initially, all text is converted to lowercase and unnecessary whitespace is removed. Then, special characters, URLs, and emojis are filtered out using regular expressions. Each emoji is replaced by its corresponding title (e.g., \smiley → "smiling face"). Tokenization is performed using language-specific tokenizers to ensure optimal segmentation. Finally, stopwords are removed, and text normalization techniques, such as stemming or lemmatization, are applied where appropriate.
+
+\subsection{Feature Extraction}
+
+To extract features, we employed a diverse range of models, including Long Short-Term Memory (LSTM) networks, multilingual language models, and Large Language Models (LLMs). The LLMs were fine-tuned using Low-Rank Adaptation (LoRA) \citep{hu2021lora}, a parameter-efficient tuning method that facilitates task-specific adaptation while maintaining computational efficiency.
+
+The extracted feature vectors were derived using two distinct approaches. The first approach utilized the output from the embedding layer of the models, which captures contextual word representations in a lower-dimensional vector space. The second approach involved extracting the final hidden state of the neural network, which encapsulates high-level semantic information of the text.
+
+\subsection{Classification Approach}
+
+Following feature extraction, we applied multiple classification algorithms to perform the multi-label classification task. One of the classifiers used was the Multi-Layer Perceptron (MLP), a feedforward artificial neural network capable of modeling complex relationships between the extracted features and the target labels. Additionally, the system employed XGBoost, a gradient boosting framework renowned for its effectiveness in structured data classification \citep{chen2016xgboost}. Furthermore, Support Vector Machines (SVMs) were utilized as a classification method due to their ability to operate effectively in high-dimensional feature spaces by identifying optimal hyperplanes for classification \citep{cortes1995support}.
+
+By combining these techniques, the proposed system captures rich linguistic representations of the input text and achieves accurate multi-label classification. The experimental setup and evaluation metrics used to validate the effectiveness of this approach are discussed in subsequent sections.

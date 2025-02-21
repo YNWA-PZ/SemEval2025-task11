@@ -41,8 +41,9 @@
 %\setlength\titlebox{<dim>}
 %
 % and set <dim> to something 5cm or larger.
+\include{imports}
 
-\title{YNWA_PZ at SemEval-2025 Task 11: Descriptive Title}
+\title{YNWA\_PZ at SemEval-2025 Task 11: Descriptive Title}
 
 % Author information can be set in various styles:
 % For several authors from the same institution:
@@ -127,17 +128,7 @@ an ACL bibliography style (\texttt{acl\_natbib.bst}),
 an example bibliography (\texttt{custom.bib}),
 and the bibliography for the ACL Anthology (\texttt{anthology.bib}).
 
-\section{Engines}
-
-To produce a PDF file, pdf\LaTeX{} is strongly recommended (over original \LaTeX{} plus dvips+ps2pdf or dvipdf).
-The style file \texttt{acl.sty} can also be used with
-lua\LaTeX{} and
-Xe\LaTeX{}, which are especially suitable for text in non-Latin scripts.
-The file \texttt{acl\_lualatex.tex} in this repository provides
-an example of how to use \texttt{acl.sty} with either
-lua\LaTeX{} or
-Xe\LaTeX{}.
-
+\include{sections/SystemOverview}
 \section{Preamble}
 
 The first line of the file must be
@@ -304,7 +295,7 @@ You can obtain the complete ACL Anthology as a Bib\TeX{} file from \url{https://
 To include both the Anthology and your own .bib file, use the following instead of the above.
 \begin{quote}
   \begin{verbatim}
-\bibliography{anthology,custom}
+\bibliography{anthology,references}
 \end{verbatim}
 \end{quote}
 
