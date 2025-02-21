@@ -1,0 +1,13 @@
+\section{Related Work}
+Multi-label emotion detection has emerged as a significant task in natural language processing (NLP), particularly for low-resource languages. The task is structured in two main output formats: (1) a binary format, which indicates whether an emotion is present in the text, and (2) an intensity scale ranging from 0 to 3, which represents the strength of the emotion in the text.
+
+Given that this task follows a text classification paradigm, various models have been explored to identify the most effective architectures. A considerable amount of research has focused on evaluating different structures to determine the optimal approach. In \cite{wang2016dimensional}, a combination of Long Short-Term Memory (LSTM) networks and Convolutional Neural Networks (CNNs) was explored, where various model configurations were compared based on their F1-score performances. These insights were leveraged to identify suitable model structures for developing a custom model tailored to the specific requirements of this task.
+
+% \section{Related Works}
+Several studies have addressed multi-label emotion detection, focusing on various model architectures and preprocessing strategies. In \cite{wang2016dimensional}, a comparative analysis of LSTM and CNN models was performed, demonstrating that hybrid architectures could enhance the F1-score performance of sentiment classification tasks. This research serves as a foundation for designing a model suited to the task at hand.
+
+For low-resource languages, text preprocessing plays a crucial role in improving model performance. The work presented in \cite{muhammad2023semeval} highlighted the effectiveness of multiple preprocessing algorithms specifically designed for African languages. The study demonstrated that well-structured preprocessing pipelines lead to better text representations, ultimately improving classification accuracy.
+
+Moreover, datasets specifically curated for emotion detection in underrepresented languages have been explored. The datasets presented in \cite{muhammad2025brighterbridginggaphumanannotated} and \cite{belay-etal-2025-evaluatin} serve as essential resources for training models and evaluating performance in real-world settings. These datasets enable the training of robust models capable of handling linguistic diversity.
+
+To enhance model performance, modifications to existing architectures have been proposed. Based on the insights from \cite{wang2016dimensional}, additional layers were incorporated into custom models to improve the representation of low-resource languages. This ensures that the models can capture intricate linguistic patterns that might otherwise be overlooked.
