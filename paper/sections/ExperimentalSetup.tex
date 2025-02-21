@@ -1,0 +1,31 @@
+\section{Experimental Setup}
+
+This section describes the experimental setup, providing details about data splits, preprocessing steps, hyperparameter tuning, and the tools and libraries utilized. The goal is to ensure reproducibility, transparency, and alignment with established best practices in machine learning research.
+
+\subsection{Data Splits and Usage}
+
+The dataset was divided into three subsets: training, development (validation), and testing. Specifically, 80\% of the training dataset was allocated for training, while the remaining 20\% was reserved for validation to facilitate model selection. Once the best-performing model was identified during the validation phase, the entire training and development datasets were combined to retrain the final model. This final model was then evaluated on the test dataset, which was held out during the entire training process to ensure an unbiased assessment of the model's generalization performance. This approach adheres to standard practices in machine learning research to prevent data leakage and ensure robust evaluation \citep{Goodfellow-et-al-2016}.
+
+\subsection{Preprocessing}
+
+Preprocessing of the dataset was performed using the \texttt{clean-text} library. The preprocessing pipeline included standardizing the text by lowercasing all characters, removing special characters and punctuation, and normalizing tokens through contraction expansion and the elimination of redundant whitespace. These steps ensured the data was clean and consistent across all subsets. Details of the preprocessing pipeline are provided in the supplementary material (Appendix A). Preprocessing was applied consistently to the training, validation, and test datasets to avoid introducing biases or inconsistencies. Such preprocessing steps have been shown to improve the performance of natural language processing (NLP) models by reducing noise and simplifying the input representations \citep{Zhang2020DataPrep}.
+
+\subsection{Hyperparameter Tuning}
+
+Hyperparameter tuning was conducted using \texttt{Optuna}, an advanced framework for automated hyperparameter optimization \citep{Akiba2019Optuna}. The hyperparameters tuned included the learning rate, batch size, dropout rate, and the number of transformer layers to fine-tune. A Bayesian optimization strategy was employed, balancing exploration of the hyperparameter space and exploitation of promising configurations. The performance of each hyperparameter configuration was evaluated on the validation set, and the best configuration was selected based on the performance metric of interest.
+
+\subsection{Model Training and Optimization}
+
+The model training process relied on Binary Cross-Entropy (BCE) as the loss function for Track A and C, and Cross-Entropy for Track B due to its suitability for classification tasks. Optimization was performed using the \texttt{AdamW} optimizer, which improves upon the standard Adam optimizer by decoupling weight decay and learning rate updates \citep{Loshchilov2019AdamW}. To further enhance training stability and convergence, a cosine annealing learning rate scheduler with restarts was employed. This scheduling approach helped adaptively reduce the learning rate over time, facilitating better exploration of the loss landscape and improving generalization. The model was trained for a fixed number of epochs, and early stopping was used to terminate training if the validation performance plateaued, thus avoiding overfitting.
+
+\subsection{Tools and Libraries}
+
+The implementation of the experiments utilized several state-of-the-art tools and libraries. The deep learning models were implemented and trained using \texttt{PyTorch}, which provides a flexible and high-performance framework for machine learning research \citep{Paszke2019PyTorch}. For data manipulation and evaluation metrics, \texttt{Scikit-Learn} was employed \citep{Pedregosa2011ScikitLearn}. Gradient boosting models were benchmarked using \texttt{XGBoost}, which is widely regarded for its efficiency and scalability \citep{Chen2016XGBoost}. Pre-trained transformer models were fine-tuned using \texttt{Hugging Face Transformers}, a library that offers robust implementations of transformer-based architectures \citep{Wolf2019HuggingFace}. These tools and libraries are well-regarded in the machine learning community and were chosen for their reliability and performance.
+
+\subsection{Postprocessing}
+
+Postprocessing involved thresholding the model's output probabilities to convert them into binary class predictions. A default threshold of 0.5 was used, but sensitivity analyses were conducted to evaluate the impact of varying the threshold. This ensured that the model's performance was robust across different operating points and provided interpretable results for downstream tasks. Minimal additional postprocessing was applied to maintain the integrity of the model's predictions.
+
+% \subsection{Concluding Remarks on Setup}
+
+% The experimental setup was designed to maximize the reliability, reproducibility, and validity of the results. By adhering to established best practices in data splitting, preprocessing, and hyperparameter tuning, and by leveraging state-of-the-art tools and optimization strategies, the experimental methodology ensures a robust evaluation of the model's performance. Furthermore, the combination of advanced optimization techniques, careful preprocessing, and systematic model selection contributes to the study's alignment with the broader goals of advancing research in machine learning. This setup not only facilitates a fair comparison with existing methods but also provides a strong foundation for further exploration and improvement of the proposed approach.
