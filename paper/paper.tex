@@ -128,10 +128,16 @@
 % an example bibliography (\texttt{custom.bib}),
 % and the bibliography for the ACL Anthology (\texttt{anthology.bib}).
 
-\input{sections/introduction}
+\input{sections/Introduction}
 \input{sections/RelatedWork}
 \input{sections/SystemOverview}
 \input{sections/ExperimentalSetup}
+\input{sections/Results}
+
+\bibliography{references}
+
+\appendix
+\input{appendix/appendix}
 % \section{Preamble}
 
 % The first line of the file must be
@@ -359,13 +365,5 @@
 % Bibliography entries for the entire Anthology, followed by custom entries
 %\bibliography{anthology,custom}
 % Custom bibliography entries only
-\bibliography{references}
-
-\appendix
-
-\section{Example Appendix}
-\label{sec:appendix}
-
-This is an appendix.
 
 \end{document}

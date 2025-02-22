@@ -66,7 +66,7 @@ In this section, we present a comprehensive overview of our system for multi-lab
 
 \subsection{Preprocessing}
 
-The preprocessing pipeline involves multiple steps to clean and standardize the text data. Initially, all text is converted to lowercase and unnecessary whitespace is removed. Then, special characters, URLs, and emojis are filtered out using regular expressions. Each emoji is replaced by its corresponding title (e.g., \smiley → "smiling face"). Tokenization is performed using language-specific tokenizers to ensure optimal segmentation. Finally, stopwords are removed, and text normalization techniques, such as stemming or lemmatization, are applied where appropriate.
+The preprocessing pipeline involves multiple steps to clean and standardize the text data. Initially, all text is converted to lowercase, and unnecessary whitespace is removed. Special characters, URLs, and emojis are filtered out using regular expressions. Emojis, in particular, are replaced with their corresponding textual descriptions (e.g., \smiley $\rightarrow$ ``smiling face''). Tokenization is performed using language-specific tokenizers to ensure optimal segmentation. Finally, stopwords are removed, and text normalization techniques, such as stemming or lemmatization, are applied where appropriate.
 
 \subsection{Feature Extraction}
 
@@ -77,5 +77,9 @@ The extracted feature vectors were derived using two distinct approaches. The fi
 \subsection{Classification Approach}
 
 Following feature extraction, we applied multiple classification algorithms to perform the multi-label classification task. One of the classifiers used was the Multi-Layer Perceptron (MLP), a feedforward artificial neural network capable of modeling complex relationships between the extracted features and the target labels. Additionally, the system employed XGBoost, a gradient boosting framework renowned for its effectiveness in structured data classification \citep{chen2016xgboost}. Furthermore, Support Vector Machines (SVMs) were utilized as a classification method due to their ability to operate effectively in high-dimensional feature spaces by identifying optimal hyperplanes for classification \citep{cortes1995support}.
+
+For languages with sufficient pretrained models available, we identified the best-performing embedding model and paired it with SVM as the classifier. This approach leverages the strengths of the pretrained embedding models in capturing language-specific nuances, while the SVM classifier ensures robust performance for multi-label classification. On the other hand, for languages with limited pretrained resources, we utilized the multilingual embedding model ``Multilingual-E5-large-instruct'' \citep{wang2024multilingual} in combination with XGBoost as the classifier. The ``Multilingual-E5-large-instruct'' model, designed to generalize across diverse languages, enabled the system to maintain high performance even in resource-constrained settings.
+
+\subsection{Summary of Model Variants}
 
 By combining these techniques, the proposed system captures rich linguistic representations of the input text and achieves accurate multi-label classification. The experimental setup and evaluation metrics used to validate the effectiveness of this approach are discussed in subsequent sections.

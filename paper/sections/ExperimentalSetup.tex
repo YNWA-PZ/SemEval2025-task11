@@ -1,9 +1,10 @@
 \section{Experimental Setup}
 
-This section describes the experimental setup, providing details about data splits, preprocessing steps, hyperparameter tuning, and the tools and libraries utilized. The goal is to ensure reproducibility, transparency, and alignment with established best practices in machine learning research.
+This section describes the experimental setup, providing details about data splits, preprocessing steps, hyperparameter tuning, computational resources, and the tools and libraries utilized. The goal is to ensure reproducibility, transparency, and alignment with established best practices in machine learning research.
+\input{tables/MainResults}
 
 \subsection{Data Splits and Usage}
-
+%TODO: refer to dataset used
 The dataset was divided into three subsets: training, development (validation), and testing. Specifically, 80\% of the training dataset was allocated for training, while the remaining 20\% was reserved for validation to facilitate model selection. Once the best-performing model was identified during the validation phase, the entire training and development datasets were combined to retrain the final model. This final model was then evaluated on the test dataset, which was held out during the entire training process to ensure an unbiased assessment of the model's generalization performance. This approach adheres to standard practices in machine learning research to prevent data leakage and ensure robust evaluation \citep{Goodfellow-et-al-2016}.
 
 \subsection{Preprocessing}
@@ -21,6 +22,10 @@ The model training process relied on Binary Cross-Entropy (BCE) as the loss func
 \subsection{Tools and Libraries}
 
 The implementation of the experiments utilized several state-of-the-art tools and libraries. The deep learning models were implemented and trained using \texttt{PyTorch}, which provides a flexible and high-performance framework for machine learning research \citep{Paszke2019PyTorch}. For data manipulation and evaluation metrics, \texttt{Scikit-Learn} was employed \citep{Pedregosa2011ScikitLearn}. Gradient boosting models were benchmarked using \texttt{XGBoost}, which is widely regarded for its efficiency and scalability \citep{chen2016xgboost}. Pre-trained transformer models were fine-tuned using \texttt{Hugging Face Transformers}, a library that offers robust implementations of transformer-based architectures \citep{Wolf2019HuggingFace}. These tools and libraries are well-regarded in the machine learning community and were chosen for their reliability and performance.
+
+\subsection{Computational Resources}
+
+All experiments were run on a Kaggle Tesla P100 GPU, which provided the necessary computational power to efficiently train and evaluate the models. The use of a Tesla P100 allowed for accelerated processing, making it feasible to leverage complex models and extensive hyperparameter tuning within a reasonable timeframe. This setup ensures that the experiments are reproducible and can be replicated by other researchers with access to similar hardware.
 
 \subsection{Postprocessing}
 
