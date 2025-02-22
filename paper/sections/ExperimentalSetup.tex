@@ -4,8 +4,7 @@ This section describes the experimental setup, providing details about data spli
 \input{tables/MainResults}
 
 \subsection{Data Splits and Usage}
-%TODO: refer to dataset used
-The dataset was divided into three subsets: training, development (validation), and testing. Specifically, 80\% of the training dataset was allocated for training, while the remaining 20\% was reserved for validation to facilitate model selection. Once the best-performing model was identified during the validation phase, the entire training and development datasets were combined to retrain the final model. This final model was then evaluated on the test dataset, which was held out during the entire training process to ensure an unbiased assessment of the model's generalization performance. This approach adheres to standard practices in machine learning research to prevent data leakage and ensure robust evaluation \citep{Goodfellow-et-al-2016}.
+The dataset\cite{muhammad2025brighterbridginggaphumanannotated} was divided into three subsets: training, development (validation), and testing. Specifically, 80\% of the training dataset was allocated for training, while the remaining 20\% was reserved for validation to facilitate model selection. Once the best-performing model was identified during the validation phase, the entire training and development datasets were combined to retrain the final model. This final model was then evaluated on the test dataset, which was held out during the entire training process to ensure an unbiased assessment of the model's generalization performance. This approach adheres to standard practices in machine learning research to prevent data leakage and ensure robust evaluation \citep{Goodfellow-et-al-2016}.
 
 \subsection{Preprocessing}
 
@@ -17,7 +16,7 @@ Hyperparameter tuning was conducted using \texttt{Optuna}, an advanced framework
 
 \subsection{Model Training and Optimization}
 
-The model training process relied on Binary Cross-Entropy (BCE) as the loss function for Track A and C, and Cross-Entropy for Track B due to its suitability for classification tasks. Optimization was performed using the \texttt{AdamW} optimizer, which improves upon the standard Adam optimizer by decoupling weight decay and learning rate updates \citep{Loshchilov2019AdamW}. To further enhance training stability and convergence, a cosine annealing learning rate scheduler with restarts was employed. This scheduling approach helped adaptively reduce the learning rate over time, facilitating better exploration of the loss landscape and improving generalization. The model was trained for a fixed number of epochs, and early stopping was used to terminate training if the validation performance plateaued, thus avoiding overfitting.
+The model training process relied on Binary Cross-Entropy (BCE) as the loss function for Track A and C, and Cross-Entropy for Track B due to its suitability for classification tasks. Given the unbalanced dataset, a weighted loss approach was employed to ensure that the model adequately learned from all classes. Optimization was performed using the \texttt{AdamW} optimizer, which improves upon the standard Adam optimizer by decoupling weight decay and learning rate updates \citep{Loshchilov2019AdamW}. To further enhance training stability and convergence, a cosine annealing learning rate scheduler with restarts was employed. This scheduling approach helped adaptively reduce the learning rate over time, facilitating better exploration of the loss landscape and improving generalization. The model was trained for a fixed number of epochs, and early stopping was used to terminate training if the validation performance plateaued, thus avoiding overfitting.
 
 \subsection{Tools and Libraries}
 
