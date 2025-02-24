@@ -1,9 +1,17 @@
 \section{Results}
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1.7\columnwidth]{images/confusion_matrices_all_tracks.png}
+    \caption{Confusion matrices for each language across Tracks A, B, and C.}
+    \label{fig:confusion_matrices}
+\end{figure*}
 Extensive experiments were conducted on multiple models to determine the most effective approach for multi-label emotion detection across various languages. The selected model was trained on datasets corresponding to each language, and its performance was analyzed using the test dataset. The evaluation results are presented in Table \ref{tab:results}.
 
-Additionally, in specific languages such as Tigrinya and Kinyarwanda in Track-C, our approach secured the second rank in the competition. This success can be attributed to the integration of innovative preprocessing steps and refined model training strategies. Furthermore, converting emojis into their corresponding textual representations had a positive impact on performance, particularly in languages where emojis commonly appear in social media text. More detailed results and additional analysis can be found in the Appendix\ref{sec:appendix}.
+Additionally, in specific languages such as Tigrinya and Kinyarwanda in Track-C, our approach secured the second rank in the competition. This success can be attributed to the integration of innovative preprocessing steps and using language-specific model embeddings. Furthermore, converting emojis into their corresponding textual representations had a positive impact on performance, particularly in languages where emojis commonly appear in social media text. More detailed results and additional analysis can be found in the Appendix \ref{sec:appendix}.
 
-A comparison of our findings with reference studies \cite{muhammad2025brighterbridginggaphumanannotated} highlights the effectiveness of our approach. By leveraging domain-specific model optimization, our models were able to bridge the gap in emotion classification for low-resource languages.
+A comparison of our findings with reference studies \cite{muhammad2025brighterbridginggaphumanannotated} highlights the effectiveness of our approach. By leveraging domain-specific model embeddings, our models were able to bridge the gap in emotion classification for low-resource languages.
+
+Figure \ref{fig:confusion_matrices} presents the pooled confusion matrices for Tracks A, B, and C. For Track A, the binary matrix shows 186565 true negatives, 17284 false positives, 13803 false negatives, and 27846 true positives, indicating strong classification performance with some misclassification at the decision boundaries. The four-class matrix for Track B highlights misclassifications among intermediate intensity levels, while the binary matrix for Track C, with 212603 true negatives and 29305 true positives, reveals a balanced yet imperfect performance in cross-lingual detection.
 
 % \begin{figure}[h]
 %     \centering
