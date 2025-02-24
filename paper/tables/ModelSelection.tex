@@ -1,0 +1,36 @@
+\begin{table*}[h]
+    \centering
+    \caption{Performance comparison of models for different languages}
+    \label{tab:model_selection}
+    \resizebox{2\columnwidth}{!}{
+        \begin{tabular}{llccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Language}} & \multirow{2}{*}{\textbf{Model}}                             & \multicolumn{3}{c}{\textbf{Metrics}}                                          \\
+            \cmidrule(lr){3-5}
+                                               &                                                             & \textbf{Recall}                      & \textbf{Precision} & \textbf{F1-Score} \\
+            \midrule
+            \multirow{5}{*}{afr}               & \citep{feng2022languageagnosticbertsentenceembedding} + SVM & 24.09                                & 38.89              & 29.12             \\
+                                               & \citep{all-MiniLM-L12-v2}  + XGB                            & 8.00                                 & 29.15              & 9.29              \\
+                                               & \citep{wang2024multilingual}  + SVM                         & 58.10                                & 49.18              & 52.19             \\
+                                               & \citep{zhang2025jasperstelladistillationsota}  + XGB        & 12.55                                & 27.55              & 15.15             \\
+                                               & \citep{lee2024nv}  + XGB                                    & 11.31                                & 36.40              & 15.19             \\
+            \midrule
+            \multirow{6}{*}{amh}               & \citep{rasyosef2025bertamharic}  + SVM                      & 49.39                                & 71.28              & 51.87             \\
+                                               & \citep{davlan2025bertamharic} + SVM                         & 40.62                                & 40.14              & 39.24             \\
+                                               & \citep{wang2024multilingual} + SVM                          & 64.80                                & 56.98              & 59.97             \\
+                                               & \citep{rasyosef2025llamaamharic} + SVM                      & 58.67                                & 56.88              & 57.32             \\
+                                               & \citep{rasyosef2025robertaamharic} + XGB                    & 35.33                                & 45.68              & 39.67             \\
+                                               & \citep{rasyosef2025robertaamharic} + SVM                    & 46.13                                & 56.56              & 47.97             \\
+            \midrule
+            \multirow{2}{*}{arq}        & Model A                                                     & 0.90                                 & 0.92               & 0.91              \\
+                                               & Model B                                                     & 0.88                                 & 0.89               & 0.88              \\
+            \bottomrule
+        \end{tabular}
+    }
+    % \captionsetup{justification=centering}
+    % \vspace{-0.5em}
+    % \begin{tablenotes}[flushleft]
+    %     \small
+    %     \item \textbf{Note:} Recall, precision, and F1-score are calculated based on standard evaluation protocols. Model A and Model B are pre-trained language models fine-tuned for specific tasks.
+    % \end{tablenotes}
+\end{table*}
