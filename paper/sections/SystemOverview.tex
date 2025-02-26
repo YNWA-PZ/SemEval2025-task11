@@ -66,11 +66,11 @@ In this section, we present a comprehensive overview of our system for multi-lab
 
 \subsection{Preprocessing}
 
-The preprocessing pipeline involves several steps to clean and standardize the text data. These include converting text to lowercase, removing unnecessary whitespace, filtering out special characters, URLs, and emojis by replacing with their textual description, normalizing tokens, performing language-specific tokenization, and removing stopwords. These steps ensure the data is consistent and suitable for NLP\footnote{natural language processing} tasks.
+The preprocessing pipeline involves several steps to clean and standardize the text data. These include converting text to lowercase, removing unnecessary whitespace, filtering out special characters, URLs, and emojis by replacing with their textual description, normalizing tokens, performing language-specific tokenization, and removing stopwords. These steps ensure the data is consistent and suitable for NLP tasks.
 
 \subsection{Feature Extraction}
 
-To extract features, we employed a diverse range of models, including LSTM\footnote{Long Short-Term Memory} networks, MLMs\footnote{Multilingual Language Models}, and LLMs\footnote{Large Language Models}. The LLMs were fine-tuned using LoRA\footnote{Low-Rank Adaptation} \citep{hu2021lora}, a parameter-efficient tuning method that facilitates task-specific adaptation while maintaining computational efficiency.
+To extract features, we employed a diverse range of models, including LSTM networks, MLMs\footnote{Multilingual Language Models}, and LLMs\footnote{Large Language Models}. The LLMs were fine-tuned using LoRA\footnote{Low-Rank Adaptation} \citep{hu2021lora}, a parameter-efficient tuning method that facilitates task-specific adaptation while maintaining computational efficiency.
 
 The extracted feature vectors were derived using two distinct approaches. The first approach utilized the output from the embedding layer of the models, which captures contextual word representations in a lower-dimensional vector space. The second approach involved extracting the final hidden state of the neural network, which encapsulates high-level semantic information of the text.
 
@@ -80,6 +80,6 @@ Following feature extraction, we applied multiple classification algorithms to p
 
 For languages with sufficient pretrained models available using MTEB\footnote{Massive Text Embedding Benchmark}\citep{muennighoff2022mteb}, we identified the best-performing embedding model and paired it mainly with SVM as the classifier. This approach leverages the strengths of the pretrained embedding models in capturing language-specific nuances, while the SVM classifier ensures robust performance for multi-label classification. On the other hand, for languages with limited pretrained resources, we utilized the multilingual embedding model ``Multilingual E5 large instruct'' \citep{wang2024multilingual} in combination with XGBoost as the classifier. The model, designed to generalize across diverse languages, enabled the system to maintain high performance even in resource-constrained settings.
 
-\subsection{Summary of Model Variants}
+% \subsection{Summary of Model Variants}
 
-By combining these techniques, the proposed system captures rich linguistic representations of the input text and achieves accurate multi-label classification. The experimental setup and evaluation metrics used to validate the effectiveness of this approach are discussed in subsequent sections.
+% By combining these techniques, the proposed system captures rich linguistic representations of the input text and achieves accurate multi-label classification. The experimental setup and evaluation metrics used to validate the effectiveness of this approach are discussed in subsequent sections.
