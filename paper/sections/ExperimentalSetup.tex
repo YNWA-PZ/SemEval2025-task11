@@ -1,8 +1,12 @@
 \section{Experimental Setup}
 
 This section describes the experimental setup, providing details about data splits, preprocessing steps, hyperparameter tuning, computational resources, and the tools and libraries utilized. The goal is to ensure reproducibility, transparency, and alignment with established best practices in machine learning research.
-\input{tables/MainResults}
-
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1.7\columnwidth]{images/confusion_matrices_all_tracks.png}
+    \caption{Confusion matrices for each language across Tracks A, B, and C.}
+    \label{fig:confusion_matrices}
+\end{figure*}
 
 \subsection{Data Splits and Usage}
 The dataset\cite{muhammad2025brighterbridginggaphumanannotated} was divided into three subsets: training, development (validation), and testing. Specifically, 80\% of the training dataset was allocated for training, while the remaining 20\% was reserved for validation to facilitate model selection. Once the best-performing model was identified during the validation phase, the entire training and development datasets were combined to retrain the final model. This final model was then evaluated on the test dataset, which was held out during the entire training process to ensure an unbiased assessment of the model's generalization performance. This approach adheres to standard practices in machine learning research to prevent data leakage and ensure robust evaluation \citep{Goodfellow-et-al-2016}.
@@ -13,19 +17,20 @@ Preprocessing of the dataset was performed using the \texttt{clean-text} library
 
 \subsection{Hyperparameter Tuning}
 
-Hyperparameter tuning was conducted using \texttt{Optuna}, an advanced framework for automated hyperparameter optimization \citep{Akiba2019Optuna}. The hyperparameters tuned included the hyperparameters of SVM and XGBoost. A Bayesian optimization strategy was employed, balancing exploration of the hyperparameter space and exploitation of promising configurations. The performance of each hyperparameter configuration was evaluated on the validation set, and the best configuration was selected based on the performance metric of interest.
+Hyperparameter tuning used Optuna \citep{Akiba2019Optuna} to optimize SVM and XGBoost hyperparameters. Bayesian optimization balanced exploration and exploitation, with configurations assessed on the validation set. The best configuration was selected based on the performance metric.
 
 \subsection{Model Training and Optimization}
 
 The model fine-tuning with LoRA, and the training of the MLP and XGBoost models, utilized Binary Cross-Entropy (BCE) as the loss function for Tracks A and C, and Cross-Entropy for Track B, owing to its appropriateness for classification tasks. Meanwhile, the training of the SVM model employed hinge loss.Using LoRA, we fine-tuned the Q, K, and V matrices for feature extractor transformer models, as shown in Table \ref{tab:model_selection}. Given the unbalanced dataset, a weighted loss approach was employed to ensure that the model adequately learned from all classes. Optimization for fine-tuning deep learning models was performed using the \texttt{AdamW} optimizer, which improves upon the standard Adam optimizer by decoupling weight decay and learning rate updates \citep{Loshchilov2019AdamW}. To further enhance training stability and convergence, a cosine annealing learning rate scheduler with restarts\cite{loshchilov2017sgdrstochasticgradientdescent} was employed. This scheduling approach helped adaptively reduce the learning rate over time, facilitating better exploration of the loss landscape and improving generalization. The model was trained for a fixed number of epochs, and early stopping was used to terminate training if the validation performance plateaued, thus avoiding overfitting.
+\input{tables/ErrorAnalysis}
 
 \subsection{Tools and Libraries}
 
-The implementation of the experiments utilized several state-of-the-art tools and libraries. The deep learning models were implemented and trained using \texttt{PyTorch}, which provides a flexible and high-performance framework for machine learning research \citep{Paszke2019PyTorch}. For data manipulation and evaluation metrics, \texttt{Scikit-Learn} was employed \citep{Pedregosa2011ScikitLearn}. Gradient boosting models were benchmarked using \texttt{XGBoost}, which is widely regarded for its efficiency and scalability \citep{chen2016xgboost}. Pre-trained transformer models were fine-tuned using \texttt{Hugging Face Transformers}, a library that offers robust implementations of transformer-based architectures \citep{Wolf2019HuggingFace}. Additionally, the \texttt{Sentence Transformers}\cite{reimers-2019-sentence-bert}\cite{reimers-2020-multilingual-sentence-bert} library was used to load embedding models. These tools and libraries are well-regarded in the machine learning community and were chosen for their reliability and performance.
+The implementation of the experiments utilized several state-of-the-art tools and libraries. The deep learning models were implemented and trained using \texttt{PyTorch} \citep{Paszke2019PyTorch}. For data manipulation and evaluation metrics, \texttt{Scikit-Learn} was employed \citep{Pedregosa2011ScikitLearn}. Gradient boosting models were benchmarked using \texttt{XGBoost} \citep{chen2016xgboost}. Pre-trained transformer models were fine-tuned using \texttt{Hugging Face Transformers} \citep{Wolf2019HuggingFace}. Additionally, the \texttt{Sentence Transformers} library was used to load embedding models \cite{reimers-2019-sentence-bert}\cite{reimers-2020-multilingual-sentence-bert}. These tools and libraries are well-regarded in the machine learning community and were chosen for their reliability and performance.
 
 \subsection{Computational Resources}
 
-All experiments were conducted using a Kaggle Tesla P100 GPU, which delivered the computational power required to efficiently train and evaluate the models. The Tesla P100 enabled faster processing, allowing us to effectively utilize complex models and perform extensive hyperparameter tuning within a practical timeframe. This setup ensures that the experiments are reproducible and can be replicated by other researchers with access to comparable hardware.
+Experiments used a Kaggle Tesla P100 GPU for efficient model training, evaluation, and hyperparameter tuning, ensuring reproducibility with comparable hardware.
 
 % \subsection{Postprocessing}
 

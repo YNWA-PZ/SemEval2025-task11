@@ -1,18 +1,15 @@
 \section{Results}
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=1.7\columnwidth]{images/confusion_matrices_all_tracks.png}
-    \caption{Confusion matrices for each language across Tracks A, B, and C.}
-    \label{fig:confusion_matrices}
-\end{figure*}
+
 Extensive experiments were conducted on multiple models to determine the most effective approach for multi-label emotion detection across various languages. The selected model was trained on datasets corresponding to each language, and its performance was analyzed using the test dataset. The evaluation results are presented in Table \ref{tab:results}. More detailed results and additional analysis can be found in the Appendix \ref{sec:appendix_model_selection}.
 
 Additionally, in specific languages such as Tigrinya and Kinyarwanda in Track-C, our approach secured the second rank in the competition. This success can be attributed to the integration of innovative preprocessing steps and using language-specific model embeddings.
 % Furthermore, converting emojis into their corresponding textual representations had a positive impact on performance, particularly in languages where emojis commonly appear in social media text.
 
-A comparison of our findings with reference studies \cite{muhammad2025brighterbridginggaphumanannotated} highlights the effectiveness of our approach. By leveraging domain-specific model embeddings, our models were able to bridge the gap in emotion classification for low-resource languages.
+A comparison of our findings with reference studies \citep{muhammad2025brighterbridginggaphumanannotated} highlights the effectiveness of our approach. By leveraging domain-specific model embeddings, our models were able to bridge the gap in emotion classification for low-resource languages.
 
-Figure \ref{fig:confusion_matrices} presents the pooled confusion matrices for Tracks A, B, and C. For Track A, the binary matrix shows 186565 true negatives, 17284 false positives, 13803 false negatives, and 27846 true positives, indicating strong classification performance with some misclassification at the decision boundaries. The four-class matrix for Track B highlights misclassifications among intermediate intensity levels, while the binary matrix for Track C, with 212603 true negatives and 29305 true positives, reveals a balanced yet imperfect performance in cross-lingual detection.
+Table \ref{tab:error_analysis} highlights key limitations in the model's contextual understanding. For instance, the model misidentified fear with sadness in "I'm just numb," due to an oversimplified link between numbness and fear, showing lexical misinterpretation without context. Another example shows the model's failure to recognize temporal contrast in "at the time," missing the current sadness implied by past indifference, indicating a need for deeper semantic processing. In the third example, the model detected sadness and fear in a father's terminal illness revelation but missed anger and surprise embedded contextually, particularly the implicit anger towards "she" who knew about the cancer and the surprise of receiving life-altering news before a significant event, revealing deficiencies in extracting emotional implications from complex narratives.
+
+Figure \ref{fig:confusion_matrices} presents the pooled confusion matrices for Tracks A, B, and C, highlighting the classification performance and misclassifications across different intensity levels and languages.
 
 % \begin{figure}[h]
 %     \centering
