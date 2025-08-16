@@ -1,5 +1,6 @@
 # YNWA_PZ at SemEval-2025 Task 11
 
+paper link: [ACL Anthology](https://aclanthology.org/2025.semeval-1.71/)
 models link: [HuggingFace](https://huggingface.co/ErfanSadegh)
 
 ## Multilingual Multi-Label Sentiment Analysis
@@ -105,5 +106,23 @@ For more details, refer to our [paper](paper.pdf) and [notebooks](notebooks/). F
 ## Citation
 
 ```bibtex
-@TODO
+@inproceedings{poulaei-etal-2025-ynwa,
+    title = "{YNWA}{\_}{PZ} at {S}em{E}val-2025 Task 11: Multilingual Multi-Label Emotion Classification",
+    author = "Poulaei, Mohammad Sadegh  and
+      Zare, Mohammad Erfan  and
+      Mohammadi, Mohammad Reza  and
+      Eetemadi, Sauleh",
+    editor = "Rosenthal, Sara  and
+      Ros{\'a}, Aiala  and
+      Ghosh, Debanjan  and
+      Zampieri, Marcos",
+    booktitle = "Proceedings of the 19th International Workshop on Semantic Evaluation (SemEval-2025)",
+    month = jul,
+    year = "2025",
+    address = "Vienna, Austria",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.semeval-1.71/",
+    pages = "508--521",
+    ISBN = "979-8-89176-273-2"
+}
 ```
